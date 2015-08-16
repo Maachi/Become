@@ -1,0 +1,92 @@
+{% extends "master.html" %}
+{% block content %}
+	{% include 'controls/header.html' %}
+	<div class="wrapper">
+		{% include 'controls/menu.html' %}
+		<section class="content">
+			<header class="main-header clearfix">
+				<h1 class="main-header__title">
+					Crear cliente <small></small>
+				</h1>
+			</header>
+		<div class="row">
+			<div class="col-md-12">
+				<article class="widget">
+
+	<!-- participant_type = models.ForeignKey(Type)
+	name = models.CharField(max_length=100, blank=True, null=True)
+	last_name = models.CharField(max_length=100, blank=True, null=True)
+	identification_number = models.CharField(max_length=200, blank=True, null=True)
+	emails = models.ManyToManyField(Email, blank=True)
+
+
+	# If the client is a company 
+	company_name = models.CharField(max_length=100, blank=True, null=True)
+	company_identification_number = models.CharField(max_length=200, blank=True, null=True)
+	# Common and required information
+
+
+	address = models.CharField(max_length=200)
+	phone = models.CharField(max_length=20)
+	cell_phone = models.CharField(max_length=20, blank=True, null=True)
+	city = models.ForeignKey(City, blank=True, null=True)
+	# Creation date
+	date = models.DateTimeField(blank=True, null=True) -->
+					<form method="post" autocomplete="off">
+						{% csrf_token %}
+						<div class="widget__content">
+							<div class="dropdown">
+								<select name="type" class="dropdown-select">
+									{% for type in type_clients %}
+										<option value="{{type.id}}">{{type.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<br />
+							<div id="personal-box">
+								<header class="widget__header">
+									<h3 class="widget__title">Persona natural</h3>
+								</header>
+								<input type="text" class="input-text" name="name" placeholder="Nombre de cliente" />
+								<input type="text" class="input-text" name="last_name" placeholder="Apellido de cliente" />
+								<input type="text" class="input-text" name="client_email" placeholder="Correo electrónico" />
+								<input type="text" class="input-text" name="identification_number" placeholder="Identificación persona natural" />
+							</div>
+							<br />
+							<div id="company-box">
+								<header class="widget__header">
+									<h2 class="widget__title">Persona jurídica</h2>
+								</header>
+								<input type="text" class="input-text" name="company_name" placeholder="Nombre compañía" />
+								<input type="text" class="input-text" name="company_identification_number" placeholder="Identificación de la compañía" />
+								<input type="text" class="input-text" name="client_company_email" placeholder="Correo electrónico compañía" />
+							</div>
+							<br />
+							<div id="common-box">
+								<header class="widget__header">
+									<h2 class="widget__title">Información común</h2>
+								</header>
+								<input type="text" class="input-text" name="address" placeholder="Dirección" />
+								<input type="text" class="input-text" name="phone" placeholder="Teléfono cliente" />
+								<input type="text" class="input-text" name="cell_phone" placeholder="Teléfono celular" />
+								<div class="dropdown">
+									<select name="city" class="dropdown-select">
+										<option value="">Ciudad</option>
+										{% for city in cities %}
+											<option value="{{city.id}}">{{city.name}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<br />
+							<button class="btn btn-skyblue btn-lg" type="submit" style="width:100%; margin:0;">Crear</button>
+							<div class="clearfix"></div>
+						</div>
+					</form>
+				</article>
+			</div>
+		</div>
+	</section> <!-- /content -->
+</div> <!-- /wrapper -->
+
+{% endblock content%}

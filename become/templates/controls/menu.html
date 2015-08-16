@@ -1,0 +1,27 @@
+		<aside class="sidebar">
+			<ul class="main-nav">
+				<li>
+					<a class="main-nav__link" href="/dashboard/">
+						<span class="main-nav__icon"><span class="pe-is-i-ltr"></span></span>
+						Actividades <span class="badge main-nav__badge badge--red">8</span>
+					</a>
+				</li>
+				<li>
+					<a class="main-nav__link" href="/clients/create/">
+						<span class="main-nav__icon"><span class="pe-is-sp-toilet-man-2"></span></span>
+						Crear Cliente
+					</a>
+				</li>
+				<li class="main-nav--collapsible">
+					<a class="main-nav__link" href="ui.html">
+						<span class="main-nav__icon"><span class="pe-is-sp-star-2"></span></span>
+						Clientes
+					</a>
+					<ul class="main-nav__submenu">
+						{% for client in organizations.0.clients.all %}
+							<li><a href="/clients/{{client.id}}"><span>{{client.client_name}}</span></a></li>
+						{% endfor %}
+					</ul>
+				</li>
+			</ul>
+		</aside> <!-- /main-nav -->

@@ -1,0 +1,48 @@
+{% extends "master.html" %}
+{% block content %}
+	{% include 'controls/header.html' %}
+	<div class="wrapper">
+		{% include 'controls/menu.html' %}
+		<section class="content">
+			<header class="main-header clearfix">
+				<h1 class="main-header__title">
+					Crear nueva factura <small>Biko sas</small>
+				</h1>
+			</header>
+		<div class="row">
+			<div class="col-md-12">
+				<article class="widget">
+					<header class="widget__header">
+						<h3 class="widget__title">Crear factura</h3>
+					</header>
+
+					<div class="widget__content">
+						<input type="text" class="input-text" placeholder="Usual input field" />
+						<div class="dropdown">
+							<select name="one" class="dropdown-select">
+								<option value="">Dropdown Menu</option>
+								<option value="1">Option #1</option>
+								<option value="2">Option #2</option>
+								<option value="3">Option #3</option>
+							</select>
+						</div>
+
+						<input type="file" name="uploader" id="uploader">
+						<label for="uploader">Single file uploader</label>
+
+						<textarea class="textarea" rows="6" placeholder="Usual Text Area"></textarea>
+
+						<input type="checkbox" id="chkbx-1" class="checkbox"><label for="chkbx-1">Checkbox</label>
+						<input type="radio" id="radio-1" name="input-radio" class="radio"><label for="radio-1">Say yes!</label>
+						<input type="radio" id="radio-2" name="input-radio" class="radio"><label for="radio-2">Say no :( </label>
+						<button class="btn btn-light pull-right" type="submit">Crear</button>
+						<div class="clearfix"></div>
+					</div>
+
+				</article>
+			</div>
+		</div>
+	</section> <!-- /content -->
+</div> <!-- /wrapper -->
+
+{% endblock content%}
