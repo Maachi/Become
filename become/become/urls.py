@@ -22,6 +22,8 @@ urlpatterns = [
     url(r'^login/$', 'organizations.views.login_page'),
     url(r'^dashboard/$', 'organizations.views.dashboard'),
     url(r'^clients/create/$', 'clients.views.create_client'),
-    url(r'^invoices/create/$', 'invoices.views.create_invoice'),
     url(r'^logout/$', 'organizations.views.logout_request'),
+    url(r'^clients/(?P<client_name>.*)/(?P<client_id>\d+)/$', 'clients.views.client_detail'),
+    url(r'^clients/(?P<client_name>.*)/(?P<client_id>\d+)/invoice/create/$', 'invoices.views.create_invoice'),
+    url(r'^clients/(?P<client_name>.*)/(?P<client_id>\d+)/contract/create/$', 'contracts.views.create_contract'),
 ]

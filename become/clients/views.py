@@ -15,11 +15,24 @@ from datetime import datetime
 
 
 def create_client(request):
+	if not request.user.is_authenticated():
+		return redirect_to_member_home(request)
 	save_client(request)
 	con = user_session(request)
 	con["type_clients"] = Type.objects.filter(active=True);
 	con["cities"] = City.objects.filter(active=True);
 	page = 'pages/create-client.html'
+	con.update(csrf(request))
+	return render_to_response(page, con)
+
+
+def client_detail(request, client_name, client_id):
+	if not request.user.is_authenticated():
+		return redirect_to_member_home(request)
+	con = user_session(request)
+	con["client"] = Client.objects.get(pk=client_id)
+	con["organization"] = Organization.objects.filter(members__id=request.user.pk)[:1][0]
+	page = 'pages/client.html'
 	con.update(csrf(request))
 	return render_to_response(page, con)
 
@@ -30,7 +43,6 @@ def save_client(request):
 	company_email = None
 	if request.method == 'POST':
 		organization = Organization.objects.filter(members__id=request.user.pk)[:1][0]
-		print organization
 		client = Client()
 		if request.POST['type']:
 			client.type = Type.objects.get(pk=int(request.POST['type'])) 

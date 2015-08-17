@@ -1,0 +1,37 @@
+{% extends "master.html" %}
+{% block content %}
+	{% include 'controls/header.html' %}
+	<div class="wrapper">
+		{% include 'controls/menu.html' %}
+		<section class="content">
+			<header class="main-header clearfix">
+				<h1 class="main-header__title">
+					Crear nuevo contrato para <small>{{client.client_name}} </small>
+				</h1>
+			</header>
+		<div class="row">
+			<div class="col-md-12">
+				<article class="widget">
+					<header class="widget__header">
+						<h3 class="widget__title">Crear contrato</h3>
+					</header>
+					<form method="post" autocomplete="off" enctype="multipart/form-data">
+						{% csrf_token %}
+						<div class="widget__content">
+							<input name="name" type="text" class="input-text" placeholder="Nombre del contrato" />
+							<input type="file" name="contract_file" id="uploader">
+							<label for="uploader">Copia del contrato</label>
+							<input type="text" class="input-text" id="from" name="from_date" placeholder="Vigencia desde" />
+							<input type="text" class="input-text" id="to" name="to_date" placeholder="Vigencia hasta">
+							<textarea name="description" class="textarea" rows="6" placeholder="Descripción del contrato"></textarea>
+							<button class="btn btn-skyblue btn-lg" type="submit" style="width:100%; margin:0;">Crear</button>
+							<div class="clearfix"></div>
+						</div>
+					</form>
+				</article>
+			</div>
+		</div>
+	</section> <!-- /content -->
+</div> <!-- /wrapper -->
+
+{% endblock content%}

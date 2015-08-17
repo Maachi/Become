@@ -46,4 +46,13 @@ class Client (models.Model):
 			return self.company_name
 		return self.name + " " + self.last_name
 
+
+	def _url(self):
+		name = self.client_name.lower()
+		for ch in [' ','/']:
+			if ch in name:
+				name = name.replace(ch, "_")
+		return name + "/" + str(self.pk) + "/"
+
+	url = property(_url)
 	client_name = property(_client_name)
