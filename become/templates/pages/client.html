@@ -25,38 +25,33 @@
 							<div class="tabs__content" style="height: 900px;">
 								<div class="tabs__content--1">
 									<a class="btn btn-green btn-lg" href="invoice/create/" style="width:100%; margin:0; border-radius:0;">Crear una nueva factura</a>
-									<div class="media social_msg">
-										<figure class="pull-left rounded-image social_msg__img">
-											<img class="media-object" src="/static/images/thumb1.jpg" alt="user">
-										</figure>
-										<div class="media-body">
-											<h4 class="media-heading social_msg__heading">Victoria Campel <span>from</span> <span>twitter</span></h4>
-											<p class="social_msg__msg">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-											<small class="social_msg__meta">6 hours ago</small>
-										</div>
-									</div> <!-- /social-msg -->
-									<div class="media social_msg">
-										<figure class="pull-left rounded-image social_msg__img">
-											<img class="media-object" src="/static/images/thumb2.jpg" alt="user">
-										</figure>
-										<div class="media-body">
-											<h4 class="media-heading social_msg__heading">Joseph Lewis <span>from</span> <span>facebook</span> <i class="pe-7s-link"></i></h4>
-											<p class="social_msg__msg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-											<hr>
-											<p class="social_msg__meta--alt">Attachment</p>
-											<div class="media attachment_msg">
-												<figure class="pull-left">
-													<img class="media-object" src="/static/images/thu.png" alt="user">
+
+									{% for invoice in organization.invoices.all %}
+										{% if invoice.status.pk = 1 %}
+											<div class="media social_msg">
+												<figure class="pull-left rounded-image social_msg__img">
+													<span style="font-size: 3em; margin: 10px 0 0 10px;" class="pe-is-i-next-circle"></span>
 												</figure>
-												<div class="media-body msg_attach">
-													<p class="social_msg__msg attach_name">Image-sample.jpg</p>
-													<p class="attach_kb">560 KB</p>
-													<a href="#" class="attach_links">View</a><a href="#" class="attach_links">Download</a>
+												<div class="media-body">
+													<h4 class="media-heading social_msg__heading">Factura de venta <span>por:</span> <span>${{invoice.value}}</span></h4>
+													<p class="social_msg__msg">{{invoice.description}}</p>
+													<p class="social_msg__msg">Impuesto tasado por venta: {{invoice.sales_tax}}%</p>
+													<hr>
+													<p class="social_msg__meta--alt">Adjunto</p>
+													<div class="media">
+														<figure class="pull-left">
+															<span style="font-size: 3em; margin: 10px 0 0 10px; color:gray;" class="pe-is-a-file-table"></span>
+														</figure>
+														<div class="media-body msg_attach">
+															<p class="social_msg__msg attach_name" style="margin-top:5px;">{{invoice.client.file_name}}.pdf</p>
+															<a href="view/{{invoice.id}}/" target="_blank" class="attach_links">Ver factura</a>
+														</div>
+													</div> <!-- /Attachment -->
+													<small class="social_msg__meta">Creado por {{invoice.owner.first_name}} {{invoice.owner.last_name}}</small>
 												</div>
-											</div> <!-- /Attachment -->
-											<small class="social_msg__meta">26 Dec, 2013</small>
-										</div>
-									</div> <!-- /social-msg -->
+											</div> <!-- /social-msg -->
+										{% endif %}
+									{% endfor %}
 									<div class="social_msg__reply">
 										<input type="text" placeholder="Click here to Reply...">
 									</div>
@@ -64,44 +59,64 @@
 								</div> <!-- /tabs__content 1 -->
 
 								<div class="tabs__content--2">
-									<div class="media social_msg">
-										<figure class="pull-left rounded-image social_msg__img">
-											<img class="media-object" src="/static/images/thumb2.jpg" alt="user">
-										</figure>
-										<div class="media-body">
-											<h4 class="media-heading social_msg__heading">Joseph Lewis <span>from</span> <span>facebook</span></h4>
-											<p class="social_msg__msg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-											<hr>
-											<p class="social_msg__meta--alt">Attachment</p>
-											<div class="media">
-												<figure class="pull-left">
-													<img class="media-object" src="/static/images/thu.png" alt="user">
+									{% for invoice in organization.invoices.all %}
+										{% if invoice.status.pk = 2 %}
+											<div class="media social_msg">
+												<figure class="pull-left rounded-image social_msg__img">
+													<span style="font-size: 3em; margin: 10px 0 0 10px;" class="pe-is-i-next-circle"></span>
 												</figure>
-												<div class="media-body msg_attach">
-													<p class="social_msg__msg attach_name">Image-sample.jpg</p>
-													<p class="attach_kb">560 KB</p>
-													<a href="#" class="attach_links">View</a><a href="#" class="attach_links">Download</a>
+												<div class="media-body">
+													<h4 class="media-heading social_msg__heading">Factura de venta <span>por:</span> <span>${{invoice.value}}</span></h4>
+													<p class="social_msg__msg">{{invoice.description}}</p>
+													<p class="social_msg__msg">Impuesto tasado por venta: {{invoice.sales_tax}}%</p>
+													<hr>
+													<p class="social_msg__meta--alt">Adjunto</p>
+													<div class="media">
+														<figure class="pull-left">
+															<span style="font-size: 3em; margin: 10px 0 0 10px; color:gray;" class="pe-is-a-file-table"></span>
+														</figure>
+														<div class="media-body msg_attach">
+															<p class="social_msg__msg attach_name" style="margin-top:5px;">{{invoice.client.file_name}}.pdf</p>
+															<a href="#" class="attach_links">Ver factura</a>
+														</div>
+													</div> <!-- /Attachment -->
+													<small class="social_msg__meta">Creado por {{invoice.owner.first_name}} {{invoice.owner.last_name}}</small>
 												</div>
-											</div> <!-- /Attachment -->
-											<small class="social_msg__meta">26 Dec, 2013</small>
-										</div>
-									</div> <!-- /social-msg -->
+											</div> <!-- /social-msg -->
+										{% endif %}
+									{% endfor %}
 									<div class="social_msg__reply">
 										<input type="text" placeholder="Click here to Reply...">
 									</div>
 								</div> <!-- /tabs__content 2 -->
 								
 								<div class="tabs__content--3">
-									<div class="media social_msg">
-										<figure class="pull-left rounded-image social_msg__img">
-											<img class="media-object" src="/static/images/thumb1.jpg" alt="user">
-										</figure>
-										<div class="media-body">
-											<h4 class="media-heading social_msg__heading">Victoria Campel <span>from</span> <span>twitter</span></h4>
-											<p class="social_msg__msg">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-											<small class="social_msg__meta">6 hours ago</small>
-										</div>
-									</div> <!-- /social-msg -->
+									{% for invoice in organization.invoices.all %}
+										{% if invoice.status.pk = 3 %}
+											<div class="media social_msg">
+												<figure class="pull-left rounded-image social_msg__img">
+													<span style="font-size: 3em; margin: 10px 0 0 10px;" class="pe-is-i-next-circle"></span>
+												</figure>
+												<div class="media-body">
+													<h4 class="media-heading social_msg__heading">Factura de venta <span>por:</span> <span>${{invoice.value}}</span></h4>
+													<p class="social_msg__msg">{{invoice.description}}</p>
+													<p class="social_msg__msg">Impuesto tasado por venta: {{invoice.sales_tax}}%</p>
+													<hr>
+													<p class="social_msg__meta--alt">Adjunto</p>
+													<div class="media">
+														<figure class="pull-left">
+															<span style="font-size: 3em; margin: 10px 0 0 10px; color:gray;" class="pe-is-a-file-table"></span>
+														</figure>
+														<div class="media-body msg_attach">
+															<p class="social_msg__msg attach_name" style="margin-top:5px;">{{invoice.client.file_name}}.pdf</p>
+															<a href="#" class="attach_links">Ver factura</a>
+														</div>
+													</div> <!-- /Attachment -->
+													<small class="social_msg__meta">Creado por {{invoice.owner.first_name}} {{invoice.owner.last_name}}</small>
+												</div>
+											</div> <!-- /social-msg -->
+										{% endif %}
+									{% endfor %}
 									<div class="social_msg__reply">
 										<input type="text" placeholder="Click here to Reply...">
 									</div>
@@ -120,12 +135,12 @@
 													<p class="social_msg__meta--alt" style="margin-bottom:5px;">Adjunto</p>
 													<div class="media">
 														<figure class="pull-left">
-															<img class="media-object" src="/static/images/thu.png" alt="user">
+															<span style="font-size: 3em; margin: 10px 0 0 10px; color:gray;" class="pe-is-a-file-clip"></span>
 														</figure>
 														<div class="media-body msg_attach">
-															<p class="social_msg__msg attach_name">Contract</p>
+															<p class="social_msg__msg attach_name">Contrato</p>
 															<p class="attach_kb">{{contract.contract_file.size}} bytes</p>
-															<a target="_blank" href="{{contract.contract_file.url}}" class="attach_links">Download</a>
+															<a target="_blank" href="{{contract.contract_file.url}}" class="attach_links">Descargar</a>
 														</div>
 													</div> <!-- /Attachment -->
 												{% endif %}

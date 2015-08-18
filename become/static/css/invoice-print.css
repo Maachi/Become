@@ -1,0 +1,243 @@
+.page {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	width:21.59cm;
+	height: 27.94cm;
+	background: #fff;
+	margin: 0;
+	padding: .75cm;
+	overflow: hidden;
+}
+
+.page .section-invoice{
+	overflow: hidden;
+}
+
+.page .header-invoice {
+	height: 10%;
+	color: #808284;
+	font-weight: 200;
+	display: -webkit-box;
+		display: -moz-box;
+			display: box;
+	-webkit-box-pack: end;
+		-moz-box-pack: end;
+			box-pack: end;
+}
+
+.page .header-invoice .image-logo,
+.page .header-invoice hgroup{
+	float: left;
+}
+
+.page .header-invoice .image-logo{
+	margin: 0 .5cm 0 0!important;
+}
+
+.page .header-invoice hgroup h1{
+	font-size: 12pt;
+}
+
+.page .header-invoice hgroup h2{
+	font-size: 11pt;
+}
+
+.page .header-invoice hgroup h3{
+	font-size: 11pt;
+	color: #808284;
+}
+
+.page .header-invoice .image-logo{
+	width: 4.5cm;
+}
+
+.page .header-invoice .company,
+.page .header-invoice .invoice-information{
+	-webkit-box-flex: 1;
+		-moz-box-flex: 1;
+			box-flex: 1;
+}
+
+.page .header-invoice .company *,
+.page .header-invoice .invoice-information * {
+	margin: 0;
+	padding: 0;
+}
+
+.page .header-invoice .invoice-information {
+	font-size: 10pt;
+	color: #808284;
+	text-align: right;
+}
+
+.divider-half{
+	width: 50%;
+}
+
+.emisor-half{
+	vertical-align: text-top;
+}
+
+.emisor-half-height{
+	height: 2.7cm!important;
+}
+
+.emisor-half-height td{
+
+}
+
+.other-half{
+	width: 25%;
+}
+
+.page .header-invoice .invoice-information .small {
+	font-size: 8.5pt;
+}
+
+.page .resolution-invoice {
+	height: 5%;
+}
+
+.divider-table{
+	border-left: 1pt solid #939598;
+}
+
+.page .resolution-invoice p{
+	text-align: center;
+	font-size: 8.5pt;
+	border-top: 1pt solid #939598;
+	border-bottom: 1pt solid #939598;
+	padding: 7pt 0;
+    line-height: 11pt;
+}
+
+.page .resolution-invoice p strong {
+	font-weight: 500;
+}
+
+.page .client-invoice {
+	height: 10%;
+	display: -webkit-box;
+		display: -moz-box;
+			display: box;
+	-webkit-box-pack: end;
+		-moz-box-pack: end;
+			box-pack: end;
+}
+
+.page .client-invoice .client-information,
+.page .client-invoice .invoice-information{
+	-webkit-box-flex: 1;
+		-moz-box-flex: 1;
+			box-flex: 1;
+	font-size: 10pt;
+	line-height: 13pt;
+	padding-top: .5cm;
+}
+
+.page .body-invoice {
+	height: 45%;
+}
+
+.page .body-invoice table{
+	width: 100%;
+}
+
+.page .body-invoice table .table-header	{
+	height: 1.5cm;
+	border-top: 1px solid #93969A;
+	border-bottom: 1px solid #93969A;
+	font-size: 9pt;
+}
+
+.page .body-invoice table .table-header th{
+	border-right: 1px solid #93969A;
+	text-align: center;
+}
+
+.page .body-invoice table .table-header th:last-child{
+	border-right:none;
+}
+
+.page .body-invoice table .table-body{
+	font-size: 9pt;
+}
+
+.t-left-body{
+	text-align: right;
+}
+
+.light-body{
+	color: #919191;
+	font-size: 8pt;
+	line-height: 10pt;
+}
+.page .body-invoice table .table-detail{
+	height: 5.5cm;
+}
+
+.page .body-invoice table .table-body td.detail-cell{
+	padding: 0
+}
+
+.page .body-invoice table .table-body td {
+	border-right: 1px solid #93969A;
+	border-bottom: 1px solid #93969A;
+	padding: .5cm;
+	vertical-align: text-top;
+}
+
+.page .body-invoice table .table-body td:last-child{
+	border-right:none;
+}
+
+.page .body-invoice table .table-body td.detail-cell table tr:last-child td {
+	border-bottom: none;
+}
+
+.page .value-invoice {
+	height: 5%;
+	font-size: 9pt;
+	border-bottom: 1px solid #93969A;
+}
+
+.value-invoice p{
+	text-align: center;
+}
+.page .legal-invoice {
+	height: 15%;
+}
+.page .legal-invoice .legal-invoice-table{
+	width: 100%;
+	font-size: 9pt;
+}
+
+.spacer-row{
+	padding-left: .5cm;
+}
+
+.page .legal-invoice .legal-invoice-table td{
+
+}
+
+.page .legal-invoice .legal-invoice-table table{
+	width: 100%;
+}
+
+.page .legal-invoice .legal-invoice-table td tr{
+	height: .9cm;
+	border-bottom: 1px solid #93969A;
+}
+.page .footer-invoice {
+	height: 10%;
+}
+
+.page .footer-invoice p{
+	text-align: center;
+	font-size: 9pt;
+	line-height: 12pt;
+}
+
+.page .footer-invoice .company-information{
+	margin: .5cm 0 0 0;
+	color: #808285;
+}

@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='client',
-            name='participant_type',
+            name='type',
             field=models.ForeignKey(to='clients.Type'),
         ),
     ]

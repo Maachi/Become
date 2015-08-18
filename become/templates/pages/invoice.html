@@ -1,0 +1,136 @@
+{% extends "master.html" %}
+{% block content %}
+	<div class="page">
+		<div class="header-invoice section-invoice">
+			<div class="company">
+				<img class="image-logo" src="/static/images/logo-maachi.svg" />
+				<hgroup>
+					<h1>{{organizations.0.name}}</h1>
+					<h2>Nit. {{organizations.0.identification_number}} - Régimen Común</h2>
+					<h3>Actividad Comercial 5820. Tarifia 6.9x1000</h3>
+				</hgroup>
+			</div>
+			<div class="invoice-information">
+				<p>FACTURA DE VENTA No. <strong>0000</strong></p>
+				<p class="small"><strong>Fecha de creación:</strong> {{invoice.creation_date}}</p>
+			</div>
+		</div>
+		<div class="resolution-invoice section-invoice">
+			<p>Resolución de facturación DIAN No. 32000119023 Octubre 1/2014 del 1 al 1000 <br />No somos grandes contribuyentes - No somos autorretenedores</p>
+		</div>
+		<div class="client-invoice section-invoice">
+			<div class="client-information">
+				<p><strong>Cliente/Comprador/Beneficiario</strong> {{invoice.client.client_name}}</p>
+				<p><strong>CC. / NIT</strong> {{invoice.client.identification}}</p>
+				<p><strong>DIRECCIÓN </strong> {{invoice.client.address}}</p>
+				<p><strong>TELÉFONO </strong> {{invoice.contract.phone}}</p>
+			</div>
+			<div class="invoice-information">
+				<p><strong>ORDEN DE COMPRA </strong> NA</p>
+				<p><strong>CONTRATO </strong> ##{{invoice.contract.id}}</p>
+				<p><strong>FECHA DE VENCIMIENTO </strong> NA</p>
+			</div>
+		</div>
+		<div class="body-invoice section-invoice">
+			<table>
+				<tr class="table-header">
+					<th>CANT.</th>
+					<th>DESCRIPCIÓN DEL PRODUCTO Y/O SERVICIO</th>
+					<th>VR. UNIT.</th>
+					<th>VR. TOTAL</th>
+				</tr>
+				<tr class="table-body table-detail">
+					<td>1</td>
+					<td>{{invoice.description}}</td>
+					<td>${{invoice.value}}</td>
+					<td class="t-left-body" >${{invoice.value}}</td>
+				</tr>
+				<tr class="table-body">
+					<td class="light-body" colspan="2">Esta factura de venta se emite de acuerdo con la ley 1231 del 17 de Julio de 2008 y de conformidad a los artículos 621, 774 y 779 del Código de Comercio y artículo 617 del Estatuto Tributario Nacional. El comprador acepta y declara haber recibido los servicios y o productos efectivamente prestados, descritos y se obliga a pagar el precio en la forma pactada aquí mismo, si no fuere cancelada dentro del plazo estipulado, causará intereses de mora a la tasa máxima autorizada por ley, facultándose a la corresponidente consulta y reporte en las centrales de riesgo.</td>
+					<td class="detail-cell">
+						<table>
+							<tr>
+								<td>SUBTOTAL</td>
+							</tr>
+							<tr>
+								<td>IVA</td>
+							</tr>
+							<tr>
+								<td>TOTAL</td>
+							</tr>
+						</table>
+					</td>
+					<td class="detail-cell">
+						<table>
+							<tr>
+								<td class="t-left-body">${{invoice.value}}</td>
+							</tr>
+							<tr>
+								<td class="t-left-body">$640.000</td>
+							</tr>
+							<tr>
+								<td class="t-left-body">$4.640.000</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="value-invoice section-invoice">
+			<p><strong>SON:</strong> {{invoice.value_letters}} MONEDA LEGAL</p>
+		</div>
+		<div class="legal-invoice section-invoice">
+			<table class="legal-invoice-table">
+				<tr>
+					<td class="divider-half emisor-half">
+						<table>
+							<tr>
+								<td>EMISOR/VENDEDOR/PRESTADOR DEL SERVICIO</td>
+							</tr>
+							<tr class="emisor-half-height">
+								<td>FIRMA Y SELLO</td>
+							</tr>
+						</table>
+					</td>
+					<td class="divider-table other-half">
+						<table>
+							<tr>
+								<td class="spacer-row">RECIBIDO</td>
+							</tr>
+							<tr>
+								<td class="spacer-row">NOMBRE</td>
+							</tr>
+							<tr>
+								<td class="spacer-row">CC</td>
+							</tr>
+							<tr>
+								<td class="spacer-row">FECHA</td>
+							</tr>
+						</table>
+					</td>
+					<td class="other-half">
+						<table>
+							<tr>
+								<td>ACEPTADO</td>
+							</tr>
+							<tr>
+								<td>NOMBRE</td>
+							</tr>
+							<tr>
+								<td>CC</td>
+							</tr>
+							<tr>
+								<td>FECHA</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="footer-invoice section-invoice">
+			<p>NOTA: Favor girar el cheque a nombre de {{organizations.0.name}}, cruzado al primer beneficiario o en su defecto consignar <br /> o transferir a la {{organizations.0.bank_accounts.all.0.type.name}} {{organizations.0.bank_accounts.all.0.name}}. No. {{organizations.0.bank_accounts.all.0.account_number}}</p>
+			<p class="company-information">Tel. 8108354 Email. sebastian@maachi.com</p>
+			<p>Bogotá, Colombia</p>
+		</div>
+	</div>
+{% endblock content%}

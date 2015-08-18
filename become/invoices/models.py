@@ -2,6 +2,7 @@ from django.db import models
 from clients.models import Client
 from contracts.models import Contract
 from django.contrib.auth.models import User
+from invoices.utils import number_to_letter
 
 #The type is important since if there is a significant change in the invoice we are going to replicate
 # the Invoice information. 
@@ -50,6 +51,25 @@ class Invoice(models.Model):
 
 	def __unicode__(self):
 		return unicode(self.value)
+
+	# Override save for the project to add special dato to the register
+	def save(self, *args, **kwargs):
+		if not self.id:
+			self.status = Status.objects.get(pk=1)
+		if not self.type:
+			self.type = Type.objects.get(pk=1)
+		super(Invoice, self).save(*args, **kwargs)
+
+
+	def _member(self):
+		from organizations.models import Member
+		return Member.get_member_with_user(self.owner)
+
+	def _value_letters(self):
+		return unicode(number_to_letter.to_word(int(self.value), 'COP')).upper()
+
+	value_letters = property(_value_letters)
+	owner_member = property(_member)
 	
 
 #The log represents when the user changes the model or admin perform a change to the status

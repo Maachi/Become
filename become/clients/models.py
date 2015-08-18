@@ -47,6 +47,14 @@ class Client (models.Model):
 		return self.name + " " + self.last_name
 
 
+	def _file(self):
+		name = self.client_name.lower()
+		for ch in [' ','/']:
+			if ch in name:
+				name = name.replace(ch, "_")
+		return name
+
+
 	def _url(self):
 		name = self.client_name.lower()
 		for ch in [' ','/']:
@@ -54,5 +62,13 @@ class Client (models.Model):
 				name = name.replace(ch, "_")
 		return name + "/" + str(self.pk) + "/"
 
+
+	def _identification(self):
+		if self.type.pk == 1:
+			return self.company_identification_number
+		return self.identification_number
+
+	identification = property(_identification)
 	url = property(_url)
 	client_name = property(_client_name)
+	file_name = property(_file)

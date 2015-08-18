@@ -11,3 +11,15 @@ class MemberAdmin(admin.ModelAdmin):
 class OrganizationAdmin(admin.ModelAdmin):
 	list_display = ['name']
 	search_fields = ['name']
+
+
+@admin.register(Type)
+class TypeAdmin(admin.ModelAdmin):
+	list_display = ['name']
+	search_fields = ['name']
+
+
+@admin.register(BankAccount)
+class BankAccountAdmin(admin.ModelAdmin):
+	list_display = ['name']
+	search_fields = ['name']

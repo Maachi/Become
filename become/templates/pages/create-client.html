@@ -12,26 +12,6 @@
 		<div class="row">
 			<div class="col-md-12">
 				<article class="widget">
-
-	<!-- participant_type = models.ForeignKey(Type)
-	name = models.CharField(max_length=100, blank=True, null=True)
-	last_name = models.CharField(max_length=100, blank=True, null=True)
-	identification_number = models.CharField(max_length=200, blank=True, null=True)
-	emails = models.ManyToManyField(Email, blank=True)
-
-
-	# If the client is a company 
-	company_name = models.CharField(max_length=100, blank=True, null=True)
-	company_identification_number = models.CharField(max_length=200, blank=True, null=True)
-	# Common and required information
-
-
-	address = models.CharField(max_length=200)
-	phone = models.CharField(max_length=20)
-	cell_phone = models.CharField(max_length=20, blank=True, null=True)
-	city = models.ForeignKey(City, blank=True, null=True)
-	# Creation date
-	date = models.DateTimeField(blank=True, null=True) -->
 					<form method="post" autocomplete="off">
 						{% csrf_token %}
 						<div class="widget__content">
