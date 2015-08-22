@@ -14,6 +14,12 @@ def upload_photo_to(instance, filename):
 	return os.path.join("uploads/members/%s" % hashlib.md5(str(instance.id)).hexdigest(), encoded_name)
 
 
+def upload_logo_to(instance, filename):
+	name, extension = os.path.splitext(filename)
+	encoded_name = hashlib.md5(str(time.time())).hexdigest() + extension
+	return os.path.join("uploads/members/logo/%s" % hashlib.md5(str(instance.id)).hexdigest(), encoded_name)
+
+
 class Member(User):
 	identification_number = models.CharField(max_length=200, blank=True, null=True)
 	photo = models.FileField(upload_to=upload_photo_to, blank=True, null=True, default=None)
@@ -57,6 +63,8 @@ class Organization (models.Model):
 	members = models.ManyToManyField(Member, blank=True)
 	bank_accounts = models.ManyToManyField(BankAccount, blank=True)
 	date = models.DateTimeField(blank=True, null=True)
+
+	logo_image = models.FileField(upload_to=upload_logo_to, blank=True, null=True, default=None)
 
 	def __unicode__(self):
 		return self.name

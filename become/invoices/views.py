@@ -58,6 +58,10 @@ def save_invoice(request, client_id):
 			invoice.contract = Contract.objects.get(pk=request.POST['contract'])
 		invoice.client = client
 		invoice.owner = request.user
+		file = File()
+		file.organization_id = organization.id
+		file.save()
+		invoice.file = file
 		invoice.save()
 		organization.invoices.add(invoice)
 	return invoice

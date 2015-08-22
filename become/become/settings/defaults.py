@@ -56,7 +56,9 @@ PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))+"/../../"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PACKAGE_ROOT, 'templates')],
+        'DIRS': [
+                    os.path.join(PACKAGE_ROOT, 'templates')
+                ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
