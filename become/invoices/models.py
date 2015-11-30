@@ -86,6 +86,15 @@ class Invoice(models.Model):
 		from organizations.models import Member
 		return Member.get_member_with_user(self.owner)
 
+	#Get the member associated with the invoice
+	def _calculate_tax(self):
+		tax = 0
+		return tax
+
+	def _calculate_total(self):
+		total = 0
+		return total
+
 	def _value_letters(self):
 		return unicode(number_to_letter.to_word(int(self.value), 'COP')).upper()
 
@@ -98,8 +107,9 @@ class Invoice(models.Model):
 
 	value_letters = property(_value_letters)
 	owner_member = property(_member)
-
 	number = property(_invoice_number)
+	tax = property(_calculate_tax)
+	total = property(_calculate_total)
 	
 
 #The log represents when the user changes the model or admin perform a change to the status

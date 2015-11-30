@@ -1,5 +1,6 @@
 {% extends "master.html" %}
 {% block content %}
+{% load humanize %}
 	<div class="page">
 		<div class="header-invoice section-invoice">
 			<div class="company">
@@ -42,8 +43,8 @@
 				<tr class="table-body table-detail">
 					<td>1</td>
 					<td>{{invoice.description}}</td>
-					<td>${{invoice.value}}</td>
-					<td class="t-left-body" >${{invoice.value}}</td>
+					<td>${{invoice.value|floatformat:"0"|intcomma}}</td>
+					<td class="t-left-body" >${{invoice.value|floatformat:"0"|intcomma}}</td>
 				</tr>
 				<tr class="table-body">
 					<td class="light-body" colspan="2">Esta factura de venta se emite de acuerdo con la ley 1231 del 17 de Julio de 2008 y de conformidad a los artículos 621, 774 y 779 del Código de Comercio y artículo 617 del Estatuto Tributario Nacional. El comprador acepta y declara haber recibido los servicios y o productos efectivamente prestados, descritos y se obliga a pagar el precio en la forma pactada aquí mismo, si no fuere cancelada dentro del plazo estipulado, causará intereses de mora a la tasa máxima autorizada por ley, facultándose a la corresponidente consulta y reporte en las centrales de riesgo.</td>
@@ -63,13 +64,13 @@
 					<td class="detail-cell">
 						<table>
 							<tr>
-								<td class="t-left-body">${{invoice.value}}</td>
+								<td class="t-left-body">${{invoice.value|floatformat:"0"|intcomma}}</td>
 							</tr>
 							<tr>
-								<td class="t-left-body">$640.000</td>
+								<td class="t-left-body">${{invoice.tax|floatformat:"0"|intcomma}}</td>
 							</tr>
 							<tr>
-								<td class="t-left-body">$4.640.000</td>
+								<td class="t-left-body">${{invoice.total|floatformat:"0"|intcomma}}</td>
 							</tr>
 						</table>
 					</td>

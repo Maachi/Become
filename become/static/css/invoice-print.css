@@ -67,6 +67,11 @@
 	font-size: 10pt;
 	color: #808284;
 	text-align: right;
+	line-height: 12pt;
+}
+
+.page .header-invoice .invoice-information p{
+	margin-bottom: 3pt;
 }
 
 .divider-half{
@@ -91,6 +96,7 @@
 
 .page .header-invoice .invoice-information .small {
 	font-size: 8.5pt;
+	line-height: 10pt;
 }
 
 .page .resolution-invoice {
